@@ -25,6 +25,7 @@ class Usersapi {
        //shortcode
        add_shortcode('users_info', array($this, 'users_table'));
 
+       //aditional scripts
        add_action('wp_footer', array($this, 'load_scripts'));
    }
 
@@ -98,7 +99,10 @@ class Usersapi {
         $html .= '<div id="myModal" class="modal">
                     <div class="modal-content">
                     <span class="close">&times;</span>
-                    <p class="info"></p>
+                     <h4>Contact Informations</h4>
+                     <p id="email"></p>
+                     <p id="phone"></p>
+                     <p id="website"></p>
                   </div>
                   </div>';
 
@@ -123,8 +127,14 @@ class Usersapi {
                     
                     fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
                     .then((response) => response.json())
-                    .then((json) => console.log(json.email));
-
+                    .then( json => {
+                            const email = json.email;
+                            const phone = json.phone;
+                            const website = json.website;
+                            document.getElementById("email").innerHTML = email;
+                            document.getElementById("phone").innerHTML = phone;
+                            document.getElementById("website").innerHTML = website;
+                    })
                 })
             });
         </script>
