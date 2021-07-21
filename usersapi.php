@@ -62,40 +62,66 @@ class Usersapi {
              1,
              true
         );
+
+        // wp_localize_script( 'wpse_handle', 'userObj', array(
+        //     'id' => 4,
+        // ) );
    }
 
    public function users_table() {
 
-        //external API
-        $url = 'https://jsonplaceholder.typicode.com/users';
-        $args = array (
-            'method' => 'GET'
-        );
+        ?>
+        <script> 
+            jQuery(document).ready(function($) {
+            var uid;
+            if(uid == null) uid = 1;
 
-        $response = wp_remote_get($url, $args);
+             fetch(`https://jsonplaceholder.typicode.com/users/${uid}`)
+                    .then((response) => response.json())
+                    .then( json => {
+                        $('#result').append(
+                            '<table><tbody>'+
+                            '<th>ID</th>'+
+                            '<th>NAME</th>'+
+                            '<th>USERNAME</th>'+
+                            '<tr>'+
+                            '<td>'+ json.id +'</td>'+
+                            '<td><a href="#find" class="show-data" data-user_id="'+ json.id +'">'+ json.name +'</a></td>'+
+                            '<td><a href="#find" class="show-data" data-user_id="'+ json.id +'">'+ json.username +'</a></td>'+
+                            '</tr>'+
+                            '</tbody></table>'
+                        );
+                    })
 
-        if( is_wp_error($response)) {
-            $error = $response->get_error_message();
-            return "Something Not Right: $error";
-        }
-        
-        $result = json_decode(wp_remote_retrieve_body($response));
+                    $( '#result' ).on('click','.show-data',function(event) {
+                        var id = $(this).data('user_id');
+                        uid = ++id;
+                        if(uid > 10) uid = 1;
+                        fetch(`https://jsonplaceholder.typicode.com/users/${uid}`)
+                            .then((response) => response.json())
+                            .then( json => {
+                                $('#result').empty().append();
+                                $('#result').append(
+                                    '<table><tbody>'+
+                                    '<th>ID</th>'+
+                                    '<th>NAME</th>'+
+                                    '<th>USERNAME</th>'+
+                                    '<tr>'+
+                                    '<td>'+ json.id +'</td>'+
+                                    '<td><a href="#find" class="show-data" data-user_id="'+ json.id +'">'+ json.name +'</a></td>'+
+                                    '<td><a href="#find" class="show-data" data-user_id="'+ json.id +'">'+ json.username +'</a></td>'+
+                                    '</tr>'+
+                                    '</tbody></table>'
+                                );
+                            })
+                    });
+                    
+            });
+        </script>
 
+       <?php
         $html = '';
-        $html .= '<table><tbody>';
-        $html .= '<th>ID</th>';
-        $html .= '<th>NAME</th>';
-        $html .= '<th>USERNAME</th>';
-
-        foreach($result as $items){
-            $html .= '<tr>';
-            $html .= '<td>'.$items->id.'</td>';
-            $html .= '<td><a href="#find" class="show-data" data-user_id="' . $items->id . '">'.$items->name.'</a></td>';
-            $html .= '<td><a href="#find" class="show-data" data-user_id="' . $items->id . '">'.$items->username.'</a></td>';
-            $html .= '</tr>';
-        }
-        
-        $html .= '</tbody></table>';
+        $html .= '<div id="result"></div>';
         $html .= '<div id="myModal" class="modal">
                     <div class="modal-content">
                     <span class="close">&times;</span>
@@ -105,7 +131,7 @@ class Usersapi {
                      <p id="website"></p>
                   </div>
                   </div>';
-
+         
         return $html;
     }
 
@@ -114,8 +140,8 @@ class Usersapi {
         <script>
             jQuery(document).ready(function($) {
 
-                $( '.show-data' ).click(function(event) {
-
+                $( '#result' ).on('click','.show-data',function(event) {
+                    
                     var modal = document.getElementById("myModal");
                     var span = document.getElementsByClassName("close")[0];
                     var id = $(this).data('user_id');
