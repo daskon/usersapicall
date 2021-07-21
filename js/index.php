@@ -1,0 +1,3 @@
+<?php
+
+//restricted access
