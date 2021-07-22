@@ -26,14 +26,14 @@
 ###### Plugin output 
 
 ###### First Look of the front-end
-![GitHub Logo](/screen/screen1.jpg)
+![GitHub Logo](/screen/screen01.jpg)
 Format: ![screen 01](url)
 
 ###### Second Look of the front-end after click on the text link
-![GitHub Logo](/screen/screen1.jpg)
+![GitHub Logo](/screen/screen02.jpg)
 Format: ![screen 01](url)
 
 ###### After closing the pop-up model window, next user information will appear on the table without reloading the page. ( asynchronous AJAX call made to the API )
-![GitHub Logo](/screen/screen1.jpg)
+![GitHub Logo](/screen/screen03.jpg)
 Format: ![screen 01](url)
 
