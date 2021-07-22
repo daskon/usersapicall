@@ -1,6 +1,6 @@
 {
     "name": "daskon/usersapicall",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "This wp plugin use to call external API called JSONPlaceholder",
     "type": "wordpress-plugin",
     "license": "GPL",
