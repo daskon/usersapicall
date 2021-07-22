@@ -22,3 +22,18 @@
 ###### If install the plugin using regular wordpress admin dashboard plugin installation section, download the zip file of this plugin and upload it into your wordpress installation. After that, you can add the below shortcode into post, page or widget in the wordpress.
 
     [users_info]
+
+###### Plugin output 
+
+###### First Look of the front-end
+![GitHub Logo](/screen/screen1.jpg)
+Format: ![screen 01](url)
+
+###### Second Look of the front-end after click on the text link
+![GitHub Logo](/screen/screen1.jpg)
+Format: ![screen 01](url)
+
+###### After closing the pop-up model window, next user information will appear on the table without reloading the page. ( asynchronous AJAX call made to the API )
+![GitHub Logo](/screen/screen1.jpg)
+Format: ![screen 01](url)
+
