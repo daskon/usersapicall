@@ -1,0 +1,19 @@
+{
+    "name": "daskon/usersapicall",
+    "version": "0.1.0",
+    "description": "This wp plugin use to call external API called JSONPlaceholder",
+    "type": "wordpress-plugin",
+    "license": "GPL",
+    "homepage": "https://github.com/daskon/usersapicall",
+    "authors": [
+        {
+            "name": "Asela Daskon",
+            "email": "admin@netlinkler.com",
+            "homepage": "https://netlinkler.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.2"
+    }
+}

@@ -11,7 +11,7 @@
  */
 
  //if the plugin access directly from the URL
- defined( 'ABSPATH' ) or die( 'Unauthorized Access' );
+ defined( 'ABSPATH' ) or die( 'Hey, It was an unauthorized Access' );
 
 class Usersapi {
   
@@ -28,7 +28,12 @@ class Usersapi {
        //aditional scripts
        add_action('wp_footer', array($this, 'load_scripts'));
    }
-
+   
+   /**
+    * create custom admin menu item for the plugin
+    *
+    * @return void
+    */
    public function create_custom_post_type()
    {
        $args = array(
@@ -44,7 +49,12 @@ class Usersapi {
 
        register_post_type('users_api', $args);
    }
-
+   
+   /**
+    * load stylings for model pop-up
+    *
+    * @return void
+    */
    public function load_assets()
    {
         wp_enqueue_style( 
@@ -56,18 +66,19 @@ class Usersapi {
         );
 
         wp_enqueue_script( 
-             'user-list', 
-             plugin_dir_url( __FILE__ ) . 'js/user-ajaxcall.js', 
-             array( 'jquery' ), 
-             1,
-             true
+            'user-list', 
+            plugin_dir_url( __FILE__ ) . 'js/user-ajaxcall.js', 
+            array('jquery'), 
+            1,
+            false
         );
-
-        // wp_localize_script( 'wpse_handle', 'userObj', array(
-        //     'id' => 4,
-        // ) );
    }
-
+   
+   /**
+    * front-end HTML table
+    *
+    * @return void
+    */
    public function users_table() {
 
         ?>
@@ -76,6 +87,7 @@ class Usersapi {
             var uid;
             if(uid == null) uid = 1;
 
+            /**when page load make the api request first time */
              fetch(`https://jsonplaceholder.typicode.com/users/${uid}`)
                     .then((response) => response.json())
                     .then( json => {
@@ -92,6 +104,9 @@ class Usersapi {
                             '</tbody></table>'
                         );
                     })
+
+                    /**when user click one of the link API call to the next record 
+                    and display in front-end **/
 
                     $( '#result' ).on('click','.show-data',function(event) {
                         var id = $(this).data('user_id');
@@ -120,6 +135,7 @@ class Usersapi {
         </script>
 
        <?php
+        //model window html tags
         $html = '';
         $html .= '<div id="result"></div>';
         $html .= '<div id="myModal" class="modal">
@@ -134,7 +150,12 @@ class Usersapi {
          
         return $html;
     }
-
+    
+    /**
+     * pass users extra info to the pop-up model
+     *
+     * @return void
+     */
     public function load_scripts()
     { ?>
         <script>

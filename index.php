@@ -1,3 +1,3 @@
 <?php
 
-//Default page
+//You are not allow to access this URL
