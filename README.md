@@ -4,6 +4,8 @@
 
 ##### This WP plugin request user information from JSONPlaceholder API and disply the respond in WP front-end page. Simply you can use the shortcode to display the result any page, post or widget you want. 
 
+##### Plugin tested on WordPress Version 5.8 and PHP version: 7.4.1
+
 ### Instructions for the installation
 
 ###### If install the plugin using composer please add below command to your composer.json
@@ -26,14 +28,11 @@
 ###### Plugin output 
 
 ###### First Look of the front-end
-![GitHub Logo](/screen/screen01.jpg)
-Format: ![screen 01](url)
+![alt text](https://github.com/daskon/usersapicall/blob/master/screen/screen01.JPG?raw=true)
 
 ###### Second Look of the front-end after click on the text link
-![GitHub Logo](/screen/screen02.jpg)
-Format: ![screen 01](url)
+![alt text](https://github.com/daskon/usersapicall/blob/master/screen/screen02.JPG?raw=true)
 
 ###### After closing the pop-up model window, next user information will appear on the table without reloading the page. ( asynchronous AJAX call made to the API )
-![GitHub Logo](/screen/screen03.jpg)
-Format: ![screen 01](url)
+![alt text](https://github.com/daskon/usersapicall/blob/master/screen/screen03.JPG?raw=true)
 
