@@ -87,12 +87,14 @@ class Usersapi {
             var uid;
             if(uid == null) uid = 1;
 
-            /**when page load make the api request first time */
+            function fetchApi()
+            {
+                /**when page load make the api request first time */
                    fetch(`https://jsonplaceholder.typicode.com/users/${uid}`)
-                    .then((response) => {
-                        if(response.status >= 400 && response.status <= 600)
+                    .then( function(response){
+                        if(!response.ok)
                         {
-                            throw new Error("Error in API response");
+                            throw new Error(response.statusText);
                         }
                         return response;
                     })
@@ -111,7 +113,10 @@ class Usersapi {
                             '</tbody></table>'
                         );
                     })
+            }
 
+            fetchApi();
+            
                     /**when user click one of the link API call to the next record 
                     and display in front-end **/
 
@@ -119,30 +124,9 @@ class Usersapi {
                         var id = $(this).data('user_id');
                         uid = ++id;
                         if(uid > 10) uid = 1;
-                        fetch(`https://jsonplaceholder.typicode.com/users/${uid}`)
-                            .then((response) => {
-                                if(response.status >= 400 && response.status <= 600)
-                                {
-                                    throw new Error("Error in API response");
-                                }
-                                return response;
-                            })
-                            .then((response) => response.json())
-                            .then( json => {
-                                $('#result').empty().append();
-                                $('#result').append(
-                                    '<table><tbody>'+
-                                    '<th>ID</th>'+
-                                    '<th>NAME</th>'+
-                                    '<th>USERNAME</th>'+
-                                    '<tr>'+
-                                    '<td>'+ json.id +'</td>'+
-                                    '<td><a href="#find" class="show-data" data-user_id="'+ json.id +'">'+ json.name +'</a></td>'+
-                                    '<td><a href="#find" class="show-data" data-user_id="'+ json.id +'">'+ json.username +'</a></td>'+
-                                    '</tr>'+
-                                    '</tbody></table>'
-                                );
-                            })
+
+                        $('#result').empty().append();
+                        fetchApi(uid);
                     });
                     
             });
@@ -187,10 +171,10 @@ class Usersapi {
                     }
                     
                     fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-                    .then((response) => {
-                        if(response.status >= 400 && response.status <= 600)
+                    .then(function(response) {
+                        if(!response.ok)
                         {
-                            throw new Error("Error in API response");
+                            throw new Error(response.statusText);
                         }
                         return response;
                      })
