@@ -4,6 +4,8 @@
 
 ##### This WP plugin request user information from JSONPlaceholder API and disply the respond in WP front-end page. Simply you can use the shortcode to display the result any page, post or widget you want. 
 
+##### Plugin tested on WordPress Version 5.8 and PHP version: 7.4.1
+
 ### Instructions for the installation
 
 ###### If install the plugin using composer please add below command to your composer.json
