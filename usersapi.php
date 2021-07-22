@@ -88,7 +88,14 @@ class Usersapi {
             if(uid == null) uid = 1;
 
             /**when page load make the api request first time */
-             fetch(`https://jsonplaceholder.typicode.com/users/${uid}`)
+                   fetch(`https://jsonplaceholder.typicode.com/users/${uid}`)
+                    .then((response) => {
+                        if(response.status >= 400 && response.status <= 600)
+                        {
+                            throw new Error("Error in API response");
+                        }
+                        return response;
+                    })
                     .then((response) => response.json())
                     .then( json => {
                         $('#result').append(
@@ -113,6 +120,13 @@ class Usersapi {
                         uid = ++id;
                         if(uid > 10) uid = 1;
                         fetch(`https://jsonplaceholder.typicode.com/users/${uid}`)
+                            .then((response) => {
+                                if(response.status >= 400 && response.status <= 600)
+                                {
+                                    throw new Error("Error in API response");
+                                }
+                                return response;
+                            })
                             .then((response) => response.json())
                             .then( json => {
                                 $('#result').empty().append();
@@ -173,6 +187,13 @@ class Usersapi {
                     }
                     
                     fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+                    .then((response) => {
+                        if(response.status >= 400 && response.status <= 600)
+                        {
+                            throw new Error("Error in API response");
+                        }
+                        return response;
+                     })
                     .then((response) => response.json())
                     .then( json => {
                             const email = json.email;

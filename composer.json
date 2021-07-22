@@ -15,5 +15,13 @@
     "minimum-stability": "dev",
     "require": {
         "php": "^7.2"
+    },
+    "autoload": {
+        "vendor": [
+            "vendor/"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9"
     }
 }
