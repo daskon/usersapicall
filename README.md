@@ -28,11 +28,11 @@
 ###### Plugin output 
 
 ###### First Look of the front-end
-![alt text](https://github.com/daskon/usersapicall/blob/master/screen/screen01.JPG?raw=true)
+![alt text](https://github.com/daskon/usersapicall/blob/master/src/screen/screen01.JPG?raw=true)
 
 ###### Second Look of the front-end after click on the text link
-![alt text](https://github.com/daskon/usersapicall/blob/master/screen/screen02.JPG?raw=true)
+![alt text](https://github.com/daskon/usersapicall/blob/master/src/screen/screen02.JPG?raw=true)
 
 ###### After closing the pop-up model window, next user information will appear on the table without reloading the page. ( asynchronous AJAX call made to the API )
-![alt text](https://github.com/daskon/usersapicall/blob/master/screen/screen03.JPG?raw=true)
+![alt text](https://github.com/daskon/usersapicall/blob/master/src/screen/screen03.JPG?raw=true)
 
