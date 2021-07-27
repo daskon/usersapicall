@@ -1,5 +1,7 @@
 <?php
 
+namespace Netlinkler\UsersApiPlugin;
+
 use PHPUnit\Framework\TestCase;
 
 class FunctionsTest extends TestCase  {
