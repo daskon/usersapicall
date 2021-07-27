@@ -2,6 +2,11 @@
 
 namespace Netlinkler\UsersApi;
 
+/**
+ * Class FetchApi
+ *
+ * @package Netlinkler\UsersApi
+ */
 class FetchApi
 {    
     /**
