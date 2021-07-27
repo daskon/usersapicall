@@ -19,14 +19,14 @@ final class UsersApi
    {
        add_action('init', array($this, 'createCustomPostType'));
        
-       //add assets 
+       //include assets css, js
        add_action('wp_enqueue_scripts', array($this, 'loadAssets'));
 
        //shortcode
        add_shortcode('users_info', array($this, 'usersTable'));
 
-       //aditional scripts
-       add_action('wp_footer', array($this, 'loadScripts'));
+       //open model window with additional user data
+       add_action('wp_footer', array($this, 'popupModel'));
    }
    
    /**
@@ -154,7 +154,7 @@ final class UsersApi
      *
      * @return void
      */
-    public function loadScripts()
+    public function popupModel()
     { 
         ?>
         <script>
